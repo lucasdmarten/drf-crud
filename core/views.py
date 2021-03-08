@@ -1,33 +1,45 @@
 from django.contrib.auth import get_user_model
-
-from rest_framework import status, viewsets
+from .serializers import UserSerializer, NaverSerializer, ProjetoSerializer\
+    # ,RegisterSerializer
+from core.models import Naver, Projeto
+from rest_framework import generics, permissions, mixins, status, viewsets
 from rest_framework.response import Response
+from rest_framework.permissions import IsAuthenticated, AllowAny
+from .permissions import IsResponsibleForNaverOrReadOnly, IsResponsibleForProjectOrReadOnly
 
-from .serializers import UserSerializer
+
+
 
 User = get_user_model()
 
-
+# ViewSets define the view behavior.
 class UserViewSet(viewsets.ModelViewSet):
+    # permission_classes = (IsAuthenticated,)
     queryset = User.objects.all()
     serializer_class = UserSerializer
-    permission_classes = []
 
-    def create(self, request, *args, **kwargs):
-        super(UserViewSet, self).create(request, *args, **kwargs)
-        return Response({}, status=status.HTTP_201_CREATED)
 
-    def list(self, request, *args, **kwargs):
-        return Response(dict(status=405), status=status.HTTP_405_METHOD_NOT_ALLOWED)
+class NaverViewSet(viewsets.ModelViewSet):
+    # permission_classes = (IsAuthenticated, IsResponsibleForNaverOrReadOnly, )
+    queryset = Naver.objects.all()
+    serializer_class = NaverSerializer
 
-    def retrieve(self, request, *args, **kwargs):
-        return Response(dict(status=405), status=status.HTTP_405_METHOD_NOT_ALLOWED)
 
-    def update(self, request, *args, **kwargs):
-        return Response(dict(status=405), status=status.HTTP_405_METHOD_NOT_ALLOWED)
+class ProjetoViewSet(viewsets.ModelViewSet):
+    # permission_classes = (IsAuthenticated, IsResponsibleForProjectOrReadOnly)
+    queryset = Projeto.objects.all()
+    serializer_class = ProjetoSerializer
 
-    def partial_update(self, request, *args, **kwargs):
-        return Response(dict(status=405), status=status.HTTP_405_METHOD_NOT_ALLOWED)
 
-    def destroy(self, request, *args, **kwargs):
-        return Response(dict(status=405), status=status.HTTP_405_METHOD_NOT_ALLOWED)
+class RegisterApi(generics.GenericAPIView):
+    serializer_class = UserSerializer
+    permission_classes=[AllowAny]
+
+    def post(self, request, *args,  **kwargs):
+        serializer = self.get_serializer(data=request.data)
+        serializer.is_valid(raise_exception=True)
+        user = serializer.save()
+        return Response({
+            "user": UserSerializer(user,    context=self.get_serializer_context()).data,
+            "message": "User Created Successfully.  Now perform Login to get your token",
+        })

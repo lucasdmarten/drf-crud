@@ -19,7 +19,6 @@ class MyUserManager(BaseUserManager):
         user.set_password(password)
         user.save(using=self._db)
         return user
-
     def create_superuser(self, username, email,  password=None):
         """
         Creates and saves a superuser with the given email, date of
@@ -33,6 +32,7 @@ class MyUserManager(BaseUserManager):
         user.is_admin = True
         user.save(using=self._db)
         return user
+
 class MyUser(AbstractBaseUser):
     username = models.CharField(max_length=20, unique=True)
     email = models.EmailField(
@@ -50,22 +50,20 @@ class MyUser(AbstractBaseUser):
 
     def __str__(self):
         return self.email
-
     def has_perm(self, perm, obj=None):
         "Does the user have a specific permission?"
         # Simplest possible answer: Yes, always
         return True
-
     def has_module_perms(self, app_label):
         "Does the user have permissions to view the app `app_label`?"
         # Simplest possible answer: Yes, always
         return True
-
     @property
     def is_staff(self):
         "Is the user a member of staff?"
         # Simplest possible answer: All admins are staff
         return self.is_admin
+
 
 class Projeto(models.Model):
     name = models.CharField(max_length=255,default="Projeto")
@@ -74,8 +72,8 @@ class Projeto(models.Model):
         verbose_name = 'Projeto'
         verbose_name_plural = 'Projeto'
 
-    def get_users(self):
-        return "\n".join([p.username for p in self.users.all()])
+    def get_users_id(self):
+        return [p.id for p in self.users.all()]
 
     def __str__(self):
         return self.name
@@ -93,7 +91,7 @@ class Naver(models.Model):
         verbose_name_plural = 'Navers'
 
     def get_projects(self):
-        return "\n".join([p.name for p in self.projetos.all()])
+        return ",".join([p.name for p in self.projetos.all()])
 
     def __str__(self):
         return self.fullname

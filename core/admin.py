@@ -82,7 +82,7 @@ class NaverAdmin(admin.ModelAdmin):
 
 
 class ProjetoAdmin(admin.ModelAdmin):
-    list_display = ('id','name','get_users',)
+    list_display = ('id','name','get_users_id',)
 
 
 # Now register the new UserAdmin...
