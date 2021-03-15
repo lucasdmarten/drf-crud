@@ -37,7 +37,7 @@ mysql> CREATE DATABASE navedexAPI;
 # Criar usuario
 mysql> CREATE USER 'djangouser'@'%' IDENTIFIED WITH mysql_native_password BY 'password';
 # Garantir acesso ao usuario
-mysql> GRANT ALL ON blog_data.* TO 'djangouser'@'%';
+mysql> GRANT ALL ON navedexAPI.* TO 'djangouser'@'%';
 mysql> FLUSH PRIVILEGES;
  ```
 
