@@ -1,16 +1,26 @@
 <h1 align="center">Navedex Api</h1>
 <p align="center"> Sistema desenvolvido para o teste proposto pela empresa <a href="https://github.com/naveteam">Nave</a>.</p>
 
+<h3>💻 Proposta</h3>
+<p>Pelo que sei existem poucos desenvolvedores que utilizam o Python como sua stack na Nave. Pensando nisso estou elaborando outro projeto com a mesma proposta de teste que utilizei neste, porém dessa vez utilizando outras tecnologias que também gostaria de enviar para vocês. As ferramentas utilizadas no projeto próximo sistema são:</p>
+<ul>
+  <li><a href="">ReactJS</a></li>
+  <li><a href="">NodeJS</a></li>
+  <li><a href="">Express</a></li>
+  <li><a href="">MySQL</a></li>
+  <li><a href="">JWT</a></li>
+</ul>
+
 <h3>💻 Sobre o projeto</h3>
 <p>O sistema possui mecanismo de autenticação por email e senha que da acesso ao token individual de cada usuario cadastrado. Após o registro a api dará o acesso aos dados de Navers e Projetos onde é possível criar, listar, alterar e deletar cada objeto do banco de dados</p>
 
 <h3>🔨 Tecnologias</h3>  
 <p>As seguintes ferramentas foram usadas na construção do projeto:</p>
 <ul>
-  <li><a href="">Python</a></li>
   <li><a href="">Django</a></li>
   <li><a href="">MySQL</a></li>
   <li><a href="">Django Rest Framework</a></li>
+  <li><a href="">JWT</a></li>
 </ul>
 
 ### Como configurar o banco de dados MySQL:
