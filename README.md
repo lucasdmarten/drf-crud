@@ -76,11 +76,11 @@ $ nano ./.env
  # Para ativar
  $ source ./env/bin/activate
  # Clone o repositório 
- $ git clone git@github.com:lucasdmarten/drf-crud.git
+ $ git clone git@github.com:lucasdmarten/navedexAPI.git
  # Instale todas as bibliotecas
  $ pip install -r requirements.txt
  # Entre na pasta do projeto
- $ cd drf-crud
+ $ cd navedexAPI
  # Migre o banco de dados
  $ python manage.py migrate
  # Runserver...
