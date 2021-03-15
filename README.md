@@ -114,6 +114,6 @@ $ nano ./.env
 
  <h2> Dificuldades </h2>
  <h3>Relação entre Naver e Projeto:</h3>
- <p>Neste projeto fiquei com muita dificuldade em fazer a relação correta entre Naver e Projeto. Usei o model User do próprio Django mas customizado com email obrigatório. A partir deste model foi criado o objeto Projeto que possui relação ManyToMany com o MyUser, ou seja, um usuario pode participar de N projetos e cada projeto possui relação com N usuarios. Posteriormente foi criado o objeto Naver que está relacionado com usuario a partir do campo OneToOneField e projetos a partir do campo ManyToManyField, assim um naver está ligado a apenas UM usuario e o naver pode estar ligado com varios projetos.</p>
- <p>Problema: Não consigo relacionar um Naver a um Projeto a partir do método POST, só na pagina de admin do Django.</p>
+ <p>Neste projeto fiquei com muita dificuldade em fazer a relação correta entre Naver e Projeto. Usei o model User do próprio Django mas customizado com email obrigatório. A partir deste model foi criado o objeto Projeto que possui relação ManyToMany com o MyUser, ou seja, um usuario pode participar de N projetos e cada projeto possui relação com N usuarios. Posteriormente foi criado o objeto Naver que está relacionado com usuario a partir do campo OneToOneField, e também projetos a partir do campo ManyToManyField, assim um naver está ligado a apenas UM usuario e o naver pode estar ligado com varios projetos.</p>
+ <p>Problema: Não consigo relacionar um Naver a um Projeto e nem o Projeto ao Naver a partir do método POST, só na pagina de admin do Django. Acredito que seja problema na serialização dos models.</p>
  
