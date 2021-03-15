@@ -120,6 +120,16 @@ $ nano ./.env
  http://localhost:8000/api/navers/<int:id>
  ```
 
+### Rota para criar, listar, alterar e deletar Projetos
+ ```bash
+ http://localhost:8000/api/projetos/
+ ```
+
+### Rota para filtrar um Projetos pelo ID e criar, listar, alterar e deletar o Projetos selecionado
+ ```bash
+ http://localhost:8000/api/projetos/<int:id>
+ ```
+
 <br>
 
  <h2> Dificuldades </h2>
